@@ -1,0 +1,11 @@
+export const LOGIN = 'LOGIN';
+export const LOGUT = 'LOGOUT';
+export const SIGNUP = 'SIGNUP';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const SIGNUP_FAIL = 'SIGNUP_FAIL';
+export const LOAD = 'LOAD';
+export const LOAD_FAIL = 'LOAD_FAIL';
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
+export const GET_USERS = 'GET_USERS';
+export const GET_USERS_FAIL = 'GET_USERS_FAIL';

@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Amplify } from 'aws-amplify';
 import config from './config';
+import { Provider } from 'react-redux'
+import store from './store';
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,
@@ -31,9 +33,13 @@ Amplify.configure({
 });
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider >,
+
   </React.StrictMode>,
   document.getElementById('root')
 );
