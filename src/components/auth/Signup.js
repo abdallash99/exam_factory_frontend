@@ -49,7 +49,7 @@ const Signup = ({ signup, history, auth }) => {
                         name='confirmPassword' autoComplete="on" type="password" placeholder="Confirm Password" />
                     <Form.Control.Feedback type="invalid">Password should be equal</Form.Control.Feedback>
                 </Form.Group>
-                <Button variant="primary" size="lg" disabled={loading || matchError || passwordError} onClick={handelLogin} type="submit">
+                <Button block variant="primary" size="lg" disabled={loading || matchError || passwordError} onClick={handelLogin} type="submit">
                     {loading ? <Spinner
                         as="span"
                         animation="border"
