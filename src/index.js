@@ -33,7 +33,6 @@ Amplify.configure({
 });
 ReactDOM.render(
   <React.StrictMode>
-
     <Provider store={store}>
       <Router>
         <App />

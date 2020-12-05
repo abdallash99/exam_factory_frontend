@@ -11,7 +11,7 @@ const config = {
     REGION: "eu-west-1",
     USER_POOL_ID: "eu-west-1_SHcZ9M5nb",
     APP_CLIENT_ID: "lrcpkhr0ej9ur8jjbr4hhd1ue",
-    IDENTITY_POOL_ID: "eu-west-1_SHcZ9M5nb",
+    IDENTITY_POOL_ID: "eu-west-1:3f9355df-c904-47f2-9084-3e761bff80d2",
   },
 };
 

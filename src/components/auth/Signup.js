@@ -9,11 +9,6 @@ const Signup = ({ signup, history, auth }) => {
         confirmPassword: '',
         email: ''
     })
-    useEffect(() => {
-        if (auth.isAuth)
-            history.push('/');
-        // eslint-disable-next-line
-    }, [auth.isAuth])
     const [matchError, setMatchError] = useState(true)
     const [passwordError, setpasswordError] = useState(false)
     useEffect(() => {
@@ -31,27 +26,27 @@ const Signup = ({ signup, history, auth }) => {
     const handelLogin = (e) => {
         e.preventDefault()
         setLoading(true)
-        signup(body, setLoading);
+        signup(body, setLoading, history);
     }
     const [loading, setLoading] = useState(false);
     return (
         <div className="Login">
-            <Form className='mt-5'>
+            <Form className='mt-5' >
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label style={{ fontSize: '1rem' }}>Email address</Form.Label>
                     <Form.Control size="lg" type="email" value={body.email}
                         onChange={onChange} name='email' placeholder="Enter email" />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control size="lg" isInvalid={passwordError} value={body.password} onChange={onChange} name='password' type="password" placeholder="Password" />
+                    <Form.Label style={{ fontSize: '1rem' }}>Password</Form.Label>
+                    <Form.Control size="lg" autoComplete="on" isInvalid={passwordError} value={body.password} onChange={onChange} name='password' type="password" placeholder="Password" />
                     <Form.Control.Feedback type="invalid">Password Length should be more than 8 and have at least one uppercase, one spical charachter and one number</Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Confirm Password</Form.Label>
+                <Form.Group controlId="formBasicConfirmPassword">
+                    <Form.Label style={{ fontSize: '1rem' }}>Confirm Password</Form.Label>
                     <Form.Control isInvalid={matchError} size="lg" value={body.confirmPassword} onChange={onChange}
-                        name='confirmPassword' type="password" placeholder="Confirm Password" />
+                        name='confirmPassword' autoComplete="on" type="password" placeholder="Confirm Password" />
                     <Form.Control.Feedback type="invalid">Password should be equal</Form.Control.Feedback>
                 </Form.Group>
                 <Button variant="primary" size="lg" disabled={loading || matchError || passwordError} onClick={handelLogin} type="submit">

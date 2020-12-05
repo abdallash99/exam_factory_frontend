@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import { Alert } from 'react-bootstrap';
 const Alerts = ({ alerts }) => {
-    console.log(alerts);
     return (
         <div className='mt-3'>
             {
@@ -18,7 +17,7 @@ const Alerts = ({ alerts }) => {
     )
 }
 Alert.propTypes = {
-    alerts: PropTypes.array.isRequired
+    alerts: PropTypes.array
 };
 const mapStateToProps = (state) => ({
     alerts: state.alert

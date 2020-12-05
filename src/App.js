@@ -17,12 +17,10 @@ function App({ load }) {
   return (
     <>
       <NavBar />
-
       <div className="container">
         <Alerts />
         <Router />
       </div>
-
     </>
 
   );

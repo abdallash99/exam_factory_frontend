@@ -30,7 +30,7 @@ const Login = ({ login, auth, history }) => {
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control size="lg" value={body.password} onChange={onChange} name='password' type="password" placeholder="Password" />
+                    <Form.Control size="lg" autoComplete="on" value={body.password} onChange={onChange} name='password' type="password" placeholder="Password" />
                 </Form.Group>
                 <Button block variant="primary" disabled={loading} size="lg" onClick={handelLogin} type="submit">
                     {loading ? <Spinner
