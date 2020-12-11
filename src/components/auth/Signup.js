@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import { signup } from './../../action/auth';
 import { connect } from 'react-redux';
 const Signup = ({ signup, history, auth }) => {
+    useEffect(() => {
+        if (auth.isAuth)
+            history.push('/home');
+        // eslint-disable-next-line
+    }, [auth.isAuth])
     const [body, setBody] = useState({
         password: '',
         confirmPassword: '',

@@ -18,9 +18,10 @@ const NavBar = ({ auth, logout }) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto" style={{ fontSize: '1rem' }}>
-                        <Nav.Link as={NavLink} to="/">Home</Nav.Link>
+                        <Nav.Link as={NavLink} to="/home">Home</Nav.Link>
                         <Nav.Link as={NavLink} to="/exams">My Exams</Nav.Link>
                         <Nav.Link as={NavLink} to="/create">Create</Nav.Link>
+                        <Nav.Link as={NavLink} to="/add">Add Exam</Nav.Link>
                     </Nav>
                     <Nav className="ml-auto" style={{ fontSize: '1rem' }}>
                         <Nav.Link onClick={handelLogout}>Logout</Nav.Link>

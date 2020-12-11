@@ -6,6 +6,7 @@ const config = {
   apiGateway: {
     REGION: "eu-west-1",
     EXAMS_URL: "https://edvvjw5gg5.execute-api.eu-west-1.amazonaws.com/prod",
+    Questions_URL: "https://wae94925aj.execute-api.eu-west-1.amazonaws.com/dev/exams"
   },
   cognito: {
     REGION: "eu-west-1",

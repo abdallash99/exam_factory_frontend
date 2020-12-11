@@ -28,7 +28,13 @@ Amplify.configure({
         endpoint: config.apiGateway.EXAMS_URL,
         region: config.apiGateway.REGION
       },
-    ]
+      {
+        name: "question-service",
+        endpoint: config.apiGateway.Questions_URL,
+        region: config.apiGateway.REGION
+      }
+    ],
+
   }
 });
 ReactDOM.render(

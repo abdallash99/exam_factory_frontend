@@ -11,7 +11,7 @@ const Login = ({ login, auth, history }) => {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         if (auth.isAuth)
-            history.push('/');
+            history.push('/home');
         // eslint-disable-next-line
     }, [auth.isAuth])
     const onChange = (e) => setBody({ ...body, [e.target.name]: e.target.value });
