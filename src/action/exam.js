@@ -61,7 +61,6 @@ export const deleteExam = (id) => async dispatch => {
 
 export const update = (body, setLoading, history) => async dispatch => {
     try {
-        console.log(body);
         const res = await API.put('exam-service', `/exams/${body.examId}`, { body })
         dispatch(setAlert('The Exam updated Successfully', 'success'));
         dispatch({ type: UPDATE_EXAM, payload: res })

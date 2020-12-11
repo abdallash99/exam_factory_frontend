@@ -16,7 +16,7 @@ const Exam = ({ item, setExam, deleteExam }) => {
 
     return (
         <Col lg='4' md='6' sm='12'>
-            <Card style={{ height: '16rem' }}>
+            <Card style={{ height: '22rem' }}>
                 <Card.Body>
                     <h3 className='text-primary h2'>{item.name}</h3>
                     <Card.Subtitle className="mb-2 text-muted">{item.description}</Card.Subtitle>
@@ -29,11 +29,11 @@ const Exam = ({ item, setExam, deleteExam }) => {
                     <Card.Text>
                         {item.examId}
                     </Card.Text>
-                    <Card.Link as={Button} href="#">Add Question</Card.Link>
-                    <Card.Link as={Button} onClick={handelUpdate} href="#">Edit Exam</Card.Link>
-                    <Card.Link as={Button} variant='danger' onClick={handelDelete} href="#">
+                    <Card.Link as={Button} block >Manage Questions</Card.Link>
+                    <Button block variant='secondary' onClick={handelUpdate} >Edit Exam</Button>
+                    <Button block variant='danger' onClick={handelDelete} >
                         Delete
-                    </Card.Link>
+                    </Button>
                 </Card.Body>
             </Card>
         </Col>
