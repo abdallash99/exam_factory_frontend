@@ -10,6 +10,8 @@ import MyExams from './../pages/MyExams';
 import Add from '../pages/Add';
 import Update from '../pages/Update';
 import Questions from './../pages/Questions';
+import Attempt from './../pages/Attempt';
+import Grade from './../pages/Grade';
 function Router() {
     return (
         <Switch>
@@ -21,7 +23,9 @@ function Router() {
             <PrivateRoute exact path='/exams' component={MyExams} />
             <PrivateRoute exact path='/add' component={Add} />
             <PrivateRoute exact path='/update' component={Update} />
-            <PrivateRoute exact path='/exams/questions' component={Questions} />
+            <PrivateRoute exact path='/exams/:id/questions' component={Questions} />
+            <PrivateRoute exact path='/attempt/:id' component={Attempt} />
+            <PrivateRoute exact path='/grade/:id' component={Grade} />
             <Route component={NotFound} />
         </Switch>
     )

@@ -48,13 +48,13 @@ export const add = (id, setLoading, history) => async dispatch => {
     }
 }
 
-export const deleteExam = (id) => async dispatch => {
+export const deleteExam = (id, setLoading) => async dispatch => {
     try {
         await API.del('exam-service', `/exams/${id}`)
         dispatch({ type: DELETE_EXAM, payload: id })
     } catch (e) {
-        //if (e.response.status === 404) dispatch(setAlert('The exam id does not exist', 'danger'))
         dispatch({ type: EXAM_FAIL, payload: false })
+        setLoading(false)
     }
 }
 

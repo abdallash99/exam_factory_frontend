@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Modal, Form } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { create } from './../../action/question';
-const CreateQuestion = ({ handleClose, show, create, examId }) => {
-
+import { update } from './../../action/question';
+const CreateQuestion = ({ handleClose, show, update, examId, item }) => {
     const [body, setBody] = useState({
-        question: '',
-        answers: ['', ''],
-        correct: '0'
+        question: item.question,
+        answers: item.answers,
+        correct: item.correct
     })
+    const [disabled, setDisabled] = useState(false);
+
     useEffect(() => {
         if (body.question.length === 0 || body.answers.some((item) => item.length === 0))
             setDisabled(true)
         else setDisabled(false)
     }, [body.answers, body.question])
-    const [disabled, setDisabled] = useState(false);
     const onClose = (id) => {
         let answers = body.answers;
         answers = answers.filter((item, index) => index !== id);
@@ -35,20 +35,20 @@ const CreateQuestion = ({ handleClose, show, create, examId }) => {
         })
     }
     onsubmit = () => {
-        create(body, examId)
+        update({ ...body, questionId: item.questionId }, examId)
         handleClose()
         setBody({
-            question: '',
-            answers: ['', ''],
-            correct: '0'
+            question: item.question,
+            answers: item.answers,
+            correct: item.correct
         })
     }
     const close = () => {
         handleClose();
         setBody({
-            question: '',
-            answers: ['', ''],
-            correct: '0'
+            question: item.question,
+            answers: item.answers,
+            correct: item.correct
         })
     }
     return (
@@ -107,11 +107,11 @@ const CreateQuestion = ({ handleClose, show, create, examId }) => {
                     <Button variant="secondary" onClick={close}>
                         Close
                     </Button>
-                    <Button variant="primary" disabled={disabled} onClick={onsubmit}>Create</Button>
+                    <Button disabled={disabled} variant="primary" onClick={onsubmit}>Update</Button>
                 </Modal.Footer>
             </Modal>
         </>
     );
 }
 
-export default connect(null, { create })(CreateQuestion)
+export default connect(null, { update })(CreateQuestion)

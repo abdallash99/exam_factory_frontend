@@ -32,6 +32,11 @@ Amplify.configure({
         name: "question-service",
         endpoint: config.apiGateway.Questions_URL,
         region: config.apiGateway.REGION
+      },
+      {
+        name: "result-service",
+        endpoint: config.apiGateway.result_URL,
+        region: config.apiGateway.REGION
       }
     ],
 

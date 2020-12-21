@@ -1,7 +1,10 @@
 import React from 'react'
-import { Spinner } from 'react-bootstrap'
 export default function MySpinner() {
     return (
-        <Spinner animation="border" size="lg" variant="primary" />
+        <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>
+            <div className="spinner-border text-primary" style={{ width: '4rem', height: '4rem' }} role="status">
+                <span className="sr-only">Loading...</span>
+            </div>
+        </div>
     )
 }

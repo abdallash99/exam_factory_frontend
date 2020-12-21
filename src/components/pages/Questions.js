@@ -1,7 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Table, Button } from 'react-bootstrap'
 import CreateQuestion from '../questions/CreateQuestion';
-const Questions = () => {
+import { connect } from 'react-redux';
+import { getQuestions } from './../../action/question';
+import Question from './../questions/Question';
+const Questions = ({ match, getQuestions, questions }) => {
+    const examId = match.params.id;
+    useEffect(() => {
+        getQuestions(examId)
+        // eslint-disable-next-line
+    }, [])
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -13,14 +21,13 @@ const Questions = () => {
                     <tr>
                         <th>#</th>
                         <th>Question</th>
-                        <th>answer</th>
                         <th>Edit</th>
                         <th>delete</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr className='text-center'>
-                        <td colspan="5">
+                        <td colSpan="5">
                             <Button block variant="primary" onClick={handleShow}>
                                 Add New Question
                             </Button>
@@ -28,32 +35,16 @@ const Questions = () => {
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                    </tr>
+                    {
+                        questions.map((item, index) => <Question examId={examId} item={item} key={item.questionId} index={index} />)
+                    }
                 </tbody>
             </Table>
-            <CreateQuestion handleClose={handleClose} handleShow={handleShow} show={show} />
+            <CreateQuestion examId={examId} handleClose={handleClose} handleShow={handleShow} show={show} />
         </div>
     )
 }
-
-export default Questions
+const mapStateToProps = (state) => ({
+    questions: state.questions.myQuestions
+});
+export default connect(mapStateToProps, { getQuestions })(Questions)

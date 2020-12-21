@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getExams } from '../../action/exam'
 import MySpinner from '../layout/Spinner';
 import PropTypes from 'prop-types'
-import { HomeExam } from './../exams/HomeExam';
+import HomeExam from './../exams/HomeExam';
 const Home = ({ getExams, myExams }) => {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
