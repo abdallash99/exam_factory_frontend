@@ -11,7 +11,7 @@ const HomeExam = ({ item, startExam }) => {
     }
     return (
         <Col xl='4' lg='6' md='12' className='mt-3'>
-            <Card style={{ height: '15rem' }}>
+            <Card style={{ minHeight: '15rem' }}>
                 <Card.Body>
                     <h3 className='text-primary h2'>{item.name}</h3>
                     <Card.Subtitle className="mb-2 text-muted">{item.description}</Card.Subtitle>
