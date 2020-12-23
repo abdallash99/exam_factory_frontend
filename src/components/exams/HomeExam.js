@@ -14,7 +14,7 @@ const HomeExam = ({ item, startExam }) => {
             <Card style={{ minHeight: '15rem' }}>
                 <Card.Body>
                     <h3 className='text-primary h2'>{item.name}</h3>
-                    <Card.Subtitle className="mb-2 text-muted">{item.description}</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">{item.description ? item.description : <br />}</Card.Subtitle>
                     <Card.Text>
                         {item.startDate}
                     </Card.Text>
