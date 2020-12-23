@@ -34,7 +34,9 @@ const Login = ({ login, auth, history }) => {
         <section className="landing">
             <div className="dark-overlay">
                 <div className="landing-inner">
-                    <Alerts />
+                    <div className="container">
+                        <Alerts />
+                    </div>
                     <div className="Login">
                         <Form className='mt-5'>
                             <Form.Group controlId="formBasicEmail">
@@ -42,7 +44,6 @@ const Login = ({ login, auth, history }) => {
                                 <Form.Control size="lg" isInvalid={emailError} value={body.email} onChange={onChange} name='email' type="email" placeholder="Enter email" />
                                 <Form.Control.Feedback type="invalid">Please fill valid email</Form.Control.Feedback>
                             </Form.Group>
-
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control size="lg" autoComplete="on" value={body.password} onChange={onChange} name='password' type="password" placeholder="Password" />

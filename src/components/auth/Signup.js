@@ -48,7 +48,9 @@ const Signup = ({ signup, history, auth }) => {
         <section className="landing">
             <div className="dark-overlay">
                 <div className="landing-inner">
-                    <Alerts />
+                    <div className="container">
+                        <Alerts />
+                    </div>
                     <div className="Login">
                         <Form className='mt-5' >
                             <Form.Group controlId="formBasicEmail">

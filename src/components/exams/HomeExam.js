@@ -21,7 +21,7 @@ const HomeExam = ({ item, startExam }) => {
                     <Card.Text>
                         {item.endDate}
                     </Card.Text>
-                    {(now >= item.endDate) ? <Button as={Link} to={`/result/${item.examId}`}>Results</Button> : null}
+                    {(now >= item.endDate) ? <Button as={Link} to={`/grade/${item.examId}`}>Results</Button> : null}
                     {((now < item.endDate) && (now >= item.startDate)) ? <Button as={Link} onClick={start} to={`/attempt/${item.examId}`}>Attepmt</Button> : null}
                 </Card.Body>
             </Card>
