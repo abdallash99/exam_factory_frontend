@@ -1,13 +1,13 @@
 import './App.css';
-import NavBar from './components/layout/Navbar';
 
 import React, { useEffect } from 'react'
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { load } from './action/auth';
-import Alerts from './components/layout/Alerts';
-import Router from './components/routing/Router';
-
+import { Pages } from './components/pages/Pages';
+import { Switch, Route } from 'react-router-dom';
+import Login from './components/auth/Login';
+import Signup from './components/auth/Signup';
 
 function App({ load }) {
   useEffect(() => {
@@ -16,11 +16,11 @@ function App({ load }) {
   }, [])
   return (
     <>
-      <NavBar />
-      <div className="container">
-        <Alerts />
-        <Router />
-      </div>
+      <Switch>
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/signup' component={Signup} />
+        <Pages />
+      </Switch>
     </>
 
   );

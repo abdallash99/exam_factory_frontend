@@ -3,6 +3,8 @@ import { Form, Button, Spinner } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { signup } from './../../action/auth';
 import { connect } from 'react-redux';
+import Alerts from './../layout/Alerts';
+import { Link } from 'react-router-dom';
 const Signup = ({ signup, history, auth }) => {
     useEffect(() => {
         if (auth.isAuth)
@@ -43,37 +45,45 @@ const Signup = ({ signup, history, auth }) => {
     }
     const [loading, setLoading] = useState(false);
     return (
-        <div className="Login">
-            <Form className='mt-5' >
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label style={{ fontSize: '1rem' }}>Email address</Form.Label>
-                    <Form.Control size="lg" type="email" value={body.email}
-                        onChange={onChange} isInvalid={emailError} name='email' placeholder="Enter email" />
-                    <Form.Control.Feedback type="invalid">Please fill valid email</Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label style={{ fontSize: '1rem' }}>Password</Form.Label>
-                    <Form.Control size="lg" autoComplete="on" isInvalid={passwordError} value={body.password} onChange={onChange} name='password' type="password" placeholder="Password" />
-                    <Form.Control.Feedback type="invalid">Password Length should be more than 8 and have at least one uppercase, one spical charachter and one number</Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group controlId="formBasicConfirmPassword">
-                    <Form.Label style={{ fontSize: '1rem' }}>Confirm Password</Form.Label>
-                    <Form.Control isInvalid={matchError} size="lg" value={body.confirmPassword} onChange={onChange}
-                        name='confirmPassword' autoComplete="on" type="password" placeholder="Confirm Password" />
-                    <Form.Control.Feedback type="invalid">Password should be equal</Form.Control.Feedback>
-                </Form.Group>
-                <Button block variant="primary" size="lg" disabled={loading || matchError || passwordError || emailError} onClick={handelLogin} type="submit">
-                    {loading ? <Spinner
-                        as="span"
-                        animation="border"
-                        size="sm"
-                        role="status"
-                        aria-hidden="true"
-                    /> : null}{' '}
-                SignUp
-            </Button>
-            </Form>
-        </div>
+        <section className="landing">
+            <div className="dark-overlay">
+                <div className="landing-inner">
+                    <Alerts />
+                    <div className="Login">
+                        <Form className='mt-5' >
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label style={{ fontSize: '1rem' }}>Email address</Form.Label>
+                                <Form.Control size="lg" type="email" value={body.email}
+                                    onChange={onChange} isInvalid={emailError} name='email' placeholder="Enter email" />
+                                <Form.Control.Feedback type="invalid">Please fill valid email</Form.Control.Feedback>
+                            </Form.Group>
+                            <Form.Group controlId="formBasicPassword">
+                                <Form.Label style={{ fontSize: '1rem' }}>Password</Form.Label>
+                                <Form.Control size="lg" autoComplete="on" isInvalid={passwordError} value={body.password} onChange={onChange} name='password' type="password" placeholder="Password" />
+                                <Form.Control.Feedback type="invalid">Password Length should be more than 8 and have at least one uppercase, one spical charachter and one number</Form.Control.Feedback>
+                            </Form.Group>
+                            <Form.Group controlId="formBasicConfirmPassword">
+                                <Form.Label style={{ fontSize: '1rem' }}>Confirm Password</Form.Label>
+                                <Form.Control isInvalid={matchError} size="lg" value={body.confirmPassword} onChange={onChange}
+                                    name='confirmPassword' autoComplete="on" type="password" placeholder="Confirm Password" />
+                                <Form.Control.Feedback type="invalid">Password should be equal</Form.Control.Feedback>
+                            </Form.Group>
+                            <Button block variant="primary" size="lg" disabled={loading || matchError || passwordError || emailError} onClick={handelLogin} type="submit">
+                                {loading ? <Spinner
+                                    as="span"
+                                    animation="border"
+                                    size="sm"
+                                    role="status"
+                                    aria-hidden="true"
+                                /> : null}{' '}
+                                SignUp
+                            </Button>
+                            <div className='mt-2'>Already have an account?<Link to='/login'> Sign in</Link> </div>
+                        </Form>
+                    </div>
+                </div>
+            </div>
+        </section>
     );
 }
 Signup.propTypes = {
