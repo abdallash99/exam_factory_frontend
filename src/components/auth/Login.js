@@ -11,7 +11,7 @@ const Login = ({ login, auth, history }) => {
     const [loading, setLoading] = useState(false);
     const [emailError, setEmailError] = useState(false);
     useEffect(() => {
-        if (!/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(body.email))
+        if (!/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i.test(body.email))
             setEmailError(true)
         else setEmailError(false);
 

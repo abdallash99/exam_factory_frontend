@@ -50,9 +50,7 @@ const Signup = ({ signup, history, auth }) => {
                     <Form.Control size="lg" type="email" value={body.email}
                         onChange={onChange} isInvalid={emailError} name='email' placeholder="Enter email" />
                     <Form.Control.Feedback type="invalid">Please fill valid email</Form.Control.Feedback>
-
                 </Form.Group>
-
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label style={{ fontSize: '1rem' }}>Password</Form.Label>
                     <Form.Control size="lg" autoComplete="on" isInvalid={passwordError} value={body.password} onChange={onChange} name='password' type="password" placeholder="Password" />
