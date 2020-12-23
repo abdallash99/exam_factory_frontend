@@ -16,6 +16,8 @@ const Signup = ({ signup, history, auth }) => {
     })
     const [matchError, setMatchError] = useState(true)
     const [passwordError, setpasswordError] = useState(false)
+    const [emailError, setEmailError] = useState(false);
+
     useEffect(() => {
         if (body.password !== body.confirmPassword)
             setMatchError(true);
@@ -24,7 +26,13 @@ const Signup = ({ signup, history, auth }) => {
             setpasswordError(true);
         else setpasswordError(false)
     }, [body.password, body.confirmPassword])
+    useEffect(() => {
+        if (!/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i.test(body.email))
+            setEmailError(true)
+        else setEmailError(false);
 
+        // eslint-disable-next-line
+    }, [body.email])
     const onChange = (e) => {
         setBody({ ...body, [e.target.name]: e.target.value })
     };
@@ -40,7 +48,9 @@ const Signup = ({ signup, history, auth }) => {
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label style={{ fontSize: '1rem' }}>Email address</Form.Label>
                     <Form.Control size="lg" type="email" value={body.email}
-                        onChange={onChange} name='email' placeholder="Enter email" />
+                        onChange={onChange} isInvalid={emailError} name='email' placeholder="Enter email" />
+                    <Form.Control.Feedback type="invalid">Please fill valid email</Form.Control.Feedback>
+
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
@@ -54,7 +64,7 @@ const Signup = ({ signup, history, auth }) => {
                         name='confirmPassword' autoComplete="on" type="password" placeholder="Confirm Password" />
                     <Form.Control.Feedback type="invalid">Password should be equal</Form.Control.Feedback>
                 </Form.Group>
-                <Button block variant="primary" size="lg" disabled={loading || matchError || passwordError} onClick={handelLogin} type="submit">
+                <Button block variant="primary" size="lg" disabled={loading || matchError || passwordError || emailError} onClick={handelLogin} type="submit">
                     {loading ? <Spinner
                         as="span"
                         animation="border"

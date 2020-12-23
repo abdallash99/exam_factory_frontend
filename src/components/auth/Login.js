@@ -9,6 +9,14 @@ const Login = ({ login, auth, history }) => {
         email: ''
     })
     const [loading, setLoading] = useState(false);
+    const [emailError, setEmailError] = useState(false);
+    useEffect(() => {
+        if (!/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(body.email))
+            setEmailError(true)
+        else setEmailError(false);
+
+        // eslint-disable-next-line
+    }, [body.email])
     useEffect(() => {
         if (auth.isAuth)
             history.push('/home');
@@ -25,14 +33,15 @@ const Login = ({ login, auth, history }) => {
             <Form className='mt-5'>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control size="lg" value={body.email} onChange={onChange} name='email' type="email" placeholder="Enter email" />
+                    <Form.Control size="lg" isInvalid={emailError} value={body.email} onChange={onChange} name='email' type="email" placeholder="Enter email" />
+                    <Form.Control.Feedback type="invalid">Please fill valid email</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control size="lg" autoComplete="on" value={body.password} onChange={onChange} name='password' type="password" placeholder="Password" />
                 </Form.Group>
-                <Button block variant="primary" disabled={loading} size="lg" onClick={handelLogin} type="submit">
+                <Button block variant="primary" disabled={loading || emailError} size="lg" onClick={handelLogin} type="submit">
                     {loading ? <Spinner
                         as="span"
                         animation="border"
