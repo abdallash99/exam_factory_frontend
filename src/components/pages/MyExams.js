@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getMyExams } from '../../action/exam'
 import MySpinner from '../layout/Spinner';
 import PropTypes from 'prop-types'
-import Exam from './../exams/Exam';
+import MyExam from '../exams/MyExam'
 const MyExams = ({ getMyExams, myExams }) => {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -15,7 +15,7 @@ const MyExams = ({ getMyExams, myExams }) => {
         <MySpinner />
         : <Row className='mt-5'>
             {
-                myExams.length === 0 ? <h1>There is no Exam to display here</h1> : myExams.map((item) => <Exam key={item.examId} item={item} />)
+                myExams.length === 0 ? <h1>There is no Exam to display here</h1> : myExams.map((item) => <MyExam key={item.examId} item={item} />)
             }
         </Row>
     )

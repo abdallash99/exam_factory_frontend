@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Card, Button, Col, Spinner } from 'react-bootstrap'
 import { connect } from 'react-redux';
-import { deleteExam, setExam } from './../../action/exam';
+import { deleteExam, setExam } from '../../action/exam';
 import { useHistory } from 'react-router-dom';
 
-const Exam = ({ item, setExam, deleteExam }) => {
+const MyExams = ({ item, setExam, deleteExam }) => {
     const history = useHistory()
     const [loading, setLoading] = useState(false)
     const handelDelete = () => {
@@ -53,4 +53,4 @@ const Exam = ({ item, setExam, deleteExam }) => {
     )
 }
 
-export default connect(null, { deleteExam, setExam })(Exam)
+export default connect(null, { deleteExam, setExam })(MyExams)
