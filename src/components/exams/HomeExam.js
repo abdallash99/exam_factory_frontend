@@ -10,7 +10,7 @@ const HomeExam = ({ item, startExam }) => {
         startExam(item.examId)
     }
     return (
-        <Col lg='4' md='6' sm='12' className='mt-3'>
+        <Col xl='4' lg='6' md='12' className='mt-3'>
             <Card style={{ height: '15rem' }}>
                 <Card.Body>
                     <h3 className='text-primary h2'>{item.name}</h3>

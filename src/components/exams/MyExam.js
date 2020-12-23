@@ -20,7 +20,7 @@ const MyExams = ({ item, setExam, deleteExam }) => {
     }
 
     return (
-        <Col xl='4' lg='6' md='12'>
+        <Col xl='4' lg='6' md='12' className='mt-3'>
             <Card style={{ height: '22rem' }}>
                 <Card.Body>
                     <h3 className='text-primary h2'>{item.name}</h3>
