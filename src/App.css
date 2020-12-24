@@ -1,8 +1,5 @@
 @media (min-width: 480px)
 {
-    .Login {
-      padding: 60px 0;
-    }
   
     .Login form {
       margin: 0 auto;
@@ -30,7 +27,12 @@
     margin: auto;
   }
 }
-
+@media (min-height: 480px) {
+  .imge{
+    width: 150px;
+    height: 150px;
+  }
+}
 
 .jumbotron {
   background: url('./header.jpg') no-repeat center center/cover;
@@ -58,3 +60,4 @@
   flex-direction: column;
   justify-content: center;
 }
+

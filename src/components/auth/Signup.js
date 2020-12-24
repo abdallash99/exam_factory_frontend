@@ -5,6 +5,8 @@ import { signup } from './../../action/auth';
 import { connect } from 'react-redux';
 import Alerts from './../layout/Alerts';
 import { Link } from 'react-router-dom';
+import logo from './whitelogo.png';
+
 const Signup = ({ signup, history, auth }) => {
     useEffect(() => {
         if (auth.isAuth)
@@ -51,6 +53,7 @@ const Signup = ({ signup, history, auth }) => {
                     <div className="container">
                         <Alerts />
                     </div>
+                    <img className='imge' src={logo} alt='' width='250px' height='250px' style={{ alignSelf: 'center' }} />
                     <div className="Login">
                         <Form className='mt-5' >
                             <Form.Group controlId="formBasicEmail">

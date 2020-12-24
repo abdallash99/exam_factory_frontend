@@ -4,17 +4,24 @@ import { connect } from 'react-redux';
 import { logout } from '../../action/auth'
 import { NavLink, Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
-
-const NavBar = ({ auth, logout }) => {
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+import logo from '../auth/whitelogo.png'
+const NavBar = ({ auth, logout, setTheme, theme }) => {
     let history = useHistory();
     const handelLogout = () => {
         logout();
         history.push('/login');
     }
+    const change = () => {
+        setTheme('darkly')
+    }
     return auth.isAuth ? (
         <Navbar bg="primary" variant="dark" expand="lg">
             <div className="container">
-                <Navbar.Brand as={Link} style={{ fontSize: '1.5rem' }} to='/'>Exam Factory</Navbar.Brand>
+                <Navbar.Brand as={Link} style={{ fontSize: '1.5rem' }} to='/'>
+                    <img src={logo} alt="" width='25px' height='25px' />
+                    Exam Factory
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto" style={{ fontSize: '1rem' }}>
@@ -22,9 +29,11 @@ const NavBar = ({ auth, logout }) => {
                         <Nav.Link as={NavLink} to="/exams">My Exams</Nav.Link>
                         <Nav.Link as={NavLink} to="/create">Create</Nav.Link>
                         <Nav.Link as={NavLink} to="/add">Add Exam</Nav.Link>
+
                     </Nav>
                     <Nav className="ml-auto" style={{ fontSize: '1rem' }}>
-                        <Nav.Link onClick={handelLogout}>Logout</Nav.Link>
+                        <BootstrapSwitchButton onChange={change} onstyle="secondary" offstyle="dark" onlabel='Light' width={75} offlabel='Dark' checked={!(theme === 'flatly')} />
+                        {' '}  <Nav.Link onClick={handelLogout}>Logout</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </div>
@@ -34,13 +43,6 @@ const NavBar = ({ auth, logout }) => {
             <Navbar bg="primary" variant="dark" expand="lg">
                 <div className="container">
                     <Navbar.Brand style={{ fontSize: '1.5rem' }} href="#home">Exam Factory</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ml-auto" style={{ fontSize: '1rem' }}>
-                            <Nav.Link as={NavLink} to="/login">SignIn</Nav.Link>
-                            <Nav.Link as={NavLink} to="/signup">SignUp</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
                 </div>
             </Navbar>
         )

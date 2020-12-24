@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Amplify } from 'aws-amplify';
+import { BootswatchSelect } from 'react-bootswatch-select';
+
 import config from './config';
 import { Provider } from 'react-redux'
 import store from './store';
@@ -42,15 +43,34 @@ Amplify.configure({
 
   }
 });
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
-    </Provider >
 
-  </React.StrictMode>,
+export default function Index() {
+  const [theme, setThem] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'flatly')
+  const setTheme = () => {
+    if (theme === 'flatly') {
+      setThem('darkly')
+      localStorage.setItem('theme', 'darkly');
+    } else {
+      setThem('flatly')
+      localStorage.setItem('theme', 'flatly');
+    }
+    window.location.reload();
+  }
+  return (
+    <React.StrictMode>
+      <Provider store={store}>
+        <Router>
+          <BootswatchSelect version={'4.4.1'} selectedThemeName={theme} selectorHidden />
+          <App setTheme={setTheme} theme={theme} />
+        </Router>
+      </Provider >
+
+    </React.StrictMode>
+  )
+}
+
+ReactDOM.render(
+  <Index />,
   document.getElementById('root')
 );
 

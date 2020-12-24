@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { login } from './../../action/auth';
 import Alerts from './../layout/Alerts';
 import { Link } from 'react-router-dom';
+import logo from './whitelogo.png';
 const Login = ({ login, auth, history }) => {
     const [body, setBody] = useState({
         password: '',
@@ -37,6 +38,7 @@ const Login = ({ login, auth, history }) => {
                     <div className="container">
                         <Alerts />
                     </div>
+                    <img className='imge' src={logo} alt='' width='250px' height='250px' style={{ alignSelf: 'center' }} />
                     <div className="Login">
                         <Form className='mt-5'>
                             <Form.Group controlId="formBasicEmail">
