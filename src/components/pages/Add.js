@@ -22,7 +22,7 @@ const Add = ({ add, history }) => {
         <div className="Form">
             <Form className='mt-5'>
                 <Form.Group controlId="idForm">
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label>Exam Id</Form.Label>
                     <Form.Control size="lg" isInvalid={idError} value={id} onChange={onChange}
                         required name='id' type="text" placeholder="Enter Id" />
                     <Form.Control.Feedback type="invalid">The Input Should Be Valid UUID V4 String</Form.Control.Feedback>
