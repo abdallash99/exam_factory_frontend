@@ -1,4 +1,4 @@
-import { GET_MY_EXAMS, CREATE_EXAM, EXAM_FAIL, ADD_EXAM, UPDATE_EXAM, DELETE_EXAM, GET_EXAMS, SET_EXAM } from './type'
+import { GET_MY_EXAMS, CREATE_EXAM, EXAM_FAIL, ADD_EXAM, UPDATE_EXAM, DELETE_EXAM, GET_EXAMS, SET_EXAM, GET_EXAM_GRADE } from './type'
 import { API } from 'aws-amplify'
 import { setAlert } from './alert';
 export const create = (body, setLoading, history) => async dispatch => {
@@ -36,9 +36,9 @@ export const getExams = (setLoading) => async dispatch => {
 }
 
 
-export const add = (id, setLoading, history) => async dispatch => {
+export const add = (id, email, setLoading, history) => async dispatch => {
     try {
-        const res = await API.post('exam-service', `/exams/${id}`)
+        const res = await API.post('exam-service', `/exams/${id}`, { body: { email } })
         dispatch({ type: ADD_EXAM, payload: res })
         history.push('/home')
     } catch (e) {
@@ -76,5 +76,16 @@ export const setExam = (body) => async dispatch => {
         dispatch({ type: SET_EXAM, payload: body });
     } catch (e) {
         dispatch({ type: EXAM_FAIL })
+    }
+}
+
+export const getExamGrade = (id, setLoading) => async dispatch => {
+    try {
+        const res = await API.get('result-service', `/mygrade/${id}`)
+        dispatch({ type: GET_EXAM_GRADE, payload: res })
+        setLoading(false)
+    } catch (e) {
+        dispatch({ type: EXAM_FAIL })
+
     }
 }

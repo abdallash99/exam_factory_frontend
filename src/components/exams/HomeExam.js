@@ -4,7 +4,7 @@ import { Card, Button, Col } from 'react-bootstrap'
 import moment from 'moment'
 import { startExam } from '../../action/question';
 import { connect } from 'react-redux';
-const HomeExam = ({ item, startExam }) => {
+const HomeExam = ({ item, startExam, result }) => {
     const now = moment().format('YYYY-MM-DDTHH:mm');
     const start = () => {
         startExam(item.examId)
@@ -21,8 +21,8 @@ const HomeExam = ({ item, startExam }) => {
                     <Card.Text>
                         {item.endDate}
                     </Card.Text>
-                    {(now >= item.endDate) ? <Button as={Link} to={`/grade/${item.examId}`}>Results</Button> : null}
-                    {((now < item.endDate) && (now >= item.startDate)) ? <Button as={Link} onClick={start} to={`/attempt/${item.examId}`}>Attepmt</Button> : null}
+                    {(now >= item.endDate || result.status === 'graded') ? <Button as={Link} to={`/grade/${item.examId}`}>Results</Button> : null}
+                    {((now < item.endDate) && (now >= item.startDate) && result.status !== 'graded' && result.status !== 'ended') ? <Button as={Link} onClick={start} to={`/attempt/${item.examId}`}>Attepmt</Button> : null}
                 </Card.Body>
             </Card>
         </Col >

@@ -18,10 +18,13 @@ const MyExams = ({ item, setExam, deleteExam }) => {
     const handelManage = () => {
         history.push(`/exams/${item.examId}/questions`)
     }
+    const handelResult = () => {
+        history.push(`/exams/grade/${item.examId}`)
+    }
 
     return (
         <Col xl='4' lg='6' md='12' className='mt-3'>
-            <Card className='card1' style={{ height: '22rem' }}>
+            <Card className='card1' style={{ height: '25rem' }}>
                 <Card.Body>
                     <h3 className='text-primary h2'>{item.name}</h3>
                     <Card.Subtitle className="mb-2 text-muted">{item.description ? item.description : <br />}</Card.Subtitle>
@@ -35,6 +38,7 @@ const MyExams = ({ item, setExam, deleteExam }) => {
                         {item.examId}
                     </Card.Text>
                     <Card.Link as={Button} onClick={handelManage} block >Manage Questions</Card.Link>
+                    <Button block variant='success' onClick={handelResult} >Exam Result</Button>
                     <Button block variant='secondary' onClick={handelUpdate} >Edit Exam</Button>
                     <Button block variant='danger' disabled={loading} onClick={handelDelete} >
                         {loading ? <Spinner

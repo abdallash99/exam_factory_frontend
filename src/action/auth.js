@@ -4,7 +4,7 @@ import { setAlert } from './alert';
 export const login = ({ email, password }, setLoading) => async dispatch => {
     try {
         const user = await Auth.signIn(email, password);
-        dispatch({ type: LOGIN, payload: user.attributes.email_verified })
+        dispatch({ type: LOGIN, payload: user })
 
     } catch (e) {
         dispatch({ type: LOGIN_FAIL })
@@ -41,7 +41,7 @@ export const load = () => async dispatch => {
     try {
         await Auth.currentSession();
         const user = await Auth.currentUserInfo();
-        dispatch({ type: LOAD, payload: user.attributes.email_verified })
+        dispatch({ type: LOAD, payload: user })
     } catch (e) {
         dispatch({ type: LOAD_FAIL })
     }

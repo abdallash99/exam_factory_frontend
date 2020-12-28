@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { add } from '../../action/exam'
 import { Form, Button, Spinner } from 'react-bootstrap'
 import { useState, useEffect } from 'react';
-const Add = ({ add, history }) => {
+const Add = ({ add, history, email }) => {
     const [id, setId] = useState('');
     const onChange = (e) => setId(e.target.value);
     const [loading, setLoading] = useState(false);
@@ -11,7 +11,7 @@ const Add = ({ add, history }) => {
     const handelAdd = (e) => {
         e.preventDefault()
         setLoading(true);
-        add(id, setLoading, history)
+        add(id, email, setLoading, history)
     }
     useEffect(() => {
         if (!/^[0-9A-F]{8}-[0-9A-F]{4}-[4][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i.test(id)) {
@@ -42,5 +42,9 @@ const Add = ({ add, history }) => {
 
     )
 }
+const mapStateToProps = (state) => ({
+    email: state.auth.email
+});
 
-export default connect(null, { add })(Add)
+
+export default connect(mapStateToProps, { add })(Add)

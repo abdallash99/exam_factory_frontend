@@ -19,7 +19,7 @@ const Create = ({ create, history }) => {
     const handelSubmit = (e) => {
         e.preventDefault()
         setLoading(true);
-        create(body, setLoading, history)
+        create({ ...body }, setLoading, history)
     }
     useEffect(() => {
         if (body.startDate.length === 0 || now > body.startDate)
@@ -71,5 +71,6 @@ const Create = ({ create, history }) => {
 Create.propTypes = {
     create: PropTypes.func.isRequired,
 }
+
 
 export default connect(null, { create })(Create)
